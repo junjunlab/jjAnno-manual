@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 annoRect | The documentation of jjAnno R package</title>
+  <meta name="description" content="This is a detailed documentation of jjAnno package and more paramenters examples." />
+  <meta name="generator" content="bookdown 0.27.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 annoRect | The documentation of jjAnno R package" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a detailed documentation of jjAnno package and more paramenters examples." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 annoRect | The documentation of jjAnno R package" />
+  
+  <meta name="twitter:description" content="This is a detailed documentation of jjAnno package and more paramenters examples." />
+  
+
+<meta name="author" content="Junjun Lao" />
+
+
+<meta name="date" content="2022-07-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="annopoint.html"/>
+<link rel="next" href="annosegment.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#installation"><i class="fa fa-check"></i><b>2.1</b> Installation</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#example"><i class="fa fa-check"></i><b>2.2</b> Example</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#example-1"><i class="fa fa-check"></i><b>2.3</b> Example</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#if-you-want-see-more-parameters-type"><i class="fa fa-check"></i><b>2.4</b> If you want see more parameters, type:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="usemycol.html"><a href="usemycol.html"><i class="fa fa-check"></i><b>3</b> useMyCol</a></li>
+<li class="chapter" data-level="4" data-path="annopoint.html"><a href="annopoint.html"><i class="fa fa-check"></i><b>4</b> annoPoint</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="annopoint.html"><a href="annopoint.html#test-data"><i class="fa fa-check"></i><b>4.1</b> test data</a></li>
+<li class="chapter" data-level="4.2" data-path="annopoint.html"><a href="annopoint.html#annotate-plot"><i class="fa fa-check"></i><b>4.2</b> annotate plot</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="annorect.html"><a href="annorect.html"><i class="fa fa-check"></i><b>5</b> annoRect</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="annorect.html"><a href="annorect.html#add-go-plot-with-annotation"><i class="fa fa-check"></i><b>5.1</b> add GO plot with annotation</a></li>
+<li class="chapter" data-level="5.2" data-path="annorect.html"><a href="annorect.html#annotate"><i class="fa fa-check"></i><b>5.2</b> annotate</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="annosegment.html"><a href="annosegment.html"><i class="fa fa-check"></i><b>6</b> annoSegment</a></li>
+<li class="chapter" data-level="7" data-path="annoimage.html"><a href="annoimage.html"><i class="fa fa-check"></i><b>7</b> annoImage</a></li>
+<li class="chapter" data-level="8" data-path="annolegend.html"><a href="annolegend.html"><i class="fa fa-check"></i><b>8</b> annoLegend</a></li>
+<li class="chapter" data-level="9" data-path="mapping-introduction.html"><a href="mapping-introduction.html"><i class="fa fa-check"></i><b>9</b> mapping introduction</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="mapping-introduction.html"><a href="mapping-introduction.html#basic-plot"><i class="fa fa-check"></i><b>9.1</b> Basic plot</a></li>
+<li class="chapter" data-level="9.2" data-path="mapping-introduction.html"><a href="mapping-introduction.html#annotate-with-annosegment"><i class="fa fa-check"></i><b>9.2</b> Annotate with annoSegment</a></li>
+<li class="chapter" data-level="9.3" data-path="mapping-introduction.html"><a href="mapping-introduction.html#annotate-with-annorect"><i class="fa fa-check"></i><b>9.3</b> Annotate with annoRect</a></li>
+<li class="chapter" data-level="9.4" data-path="mapping-introduction.html"><a href="mapping-introduction.html#annotate-with-rotated-rect"><i class="fa fa-check"></i><b>9.4</b> Annotate with rotated Rect</a></li>
+<li class="chapter" data-level="9.5" data-path="mapping-introduction.html"><a href="mapping-introduction.html#annotate-with-annopoint2"><i class="fa fa-check"></i><b>9.5</b> Annotate with annoPoint2</a></li>
+<li class="chapter" data-level="9.6" data-path="mapping-introduction.html"><a href="mapping-introduction.html#annotate-with-annotriangle"><i class="fa fa-check"></i><b>9.6</b> Annotate with annoTriangle</a></li>
+<li class="chapter" data-level="9.7" data-path="mapping-introduction.html"><a href="mapping-introduction.html#example-2"><i class="fa fa-check"></i><b>9.7</b> Example</a></li>
+<li class="chapter" data-level="9.8" data-path="mapping-introduction.html"><a href="mapping-introduction.html#end"><i class="fa fa-check"></i><b>9.8</b> End</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="facet-introduction.html"><a href="facet-introduction.html"><i class="fa fa-check"></i><b>10</b> facet introduction</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="facet-introduction.html"><a href="facet-introduction.html#basic-plot-1"><i class="fa fa-check"></i><b>10.1</b> basic plot</a></li>
+<li class="chapter" data-level="10.2" data-path="facet-introduction.html"><a href="facet-introduction.html#annopoint2"><i class="fa fa-check"></i><b>10.2</b> annoPoint2</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="facet-introduction.html"><a href="facet-introduction.html#facet-by-cellgroup"><i class="fa fa-check"></i><b>10.2.1</b> facet by cellGroup</a></li>
+<li class="chapter" data-level="10.2.2" data-path="facet-introduction.html"><a href="facet-introduction.html#facet-by-class"><i class="fa fa-check"></i><b>10.2.2</b> facet by class</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="facet-introduction.html"><a href="facet-introduction.html#annosegment-1"><i class="fa fa-check"></i><b>10.3</b> annoSegment</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="facet-introduction.html"><a href="facet-introduction.html#facet-by-cellgroup-1"><i class="fa fa-check"></i><b>10.3.1</b> facet by cellGroup</a></li>
+<li class="chapter" data-level="10.3.2" data-path="facet-introduction.html"><a href="facet-introduction.html#facet-by-class-1"><i class="fa fa-check"></i><b>10.3.2</b> facet by class</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="facet-introduction.html"><a href="facet-introduction.html#annorect-1"><i class="fa fa-check"></i><b>10.4</b> annoRect</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="facet-introduction.html"><a href="facet-introduction.html#facet-by-cellgroup-2"><i class="fa fa-check"></i><b>10.4.1</b> facet by cellGroup</a></li>
+<li class="chapter" data-level="10.4.2" data-path="facet-introduction.html"><a href="facet-introduction.html#facet-by-class-2"><i class="fa fa-check"></i><b>10.4.2</b> facet by class</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="facet-introduction.html"><a href="facet-introduction.html#annotriangle"><i class="fa fa-check"></i><b>10.5</b> annoTriangle</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="facet-introduction.html"><a href="facet-introduction.html#facet-by-cellgroup-3"><i class="fa fa-check"></i><b>10.5.1</b> facet by cellGroup</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="gradient-color-rect-introduction.html"><a href="gradient-color-rect-introduction.html"><i class="fa fa-check"></i><b>11</b> gradient color rect introduction</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="gradient-color-rect-introduction.html"><a href="gradient-color-rect-introduction.html#examples"><i class="fa fa-check"></i><b>11.1</b> Examples</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The documentation of jjAnno R package</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="annorect" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> annoRect<a href="annorect.html#annorect" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This function can be used to add some <strong>rects annotations</strong> beside the plot or in plot.</p>
+<p>Simple annotation:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="annorect.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jjAnno)</span>
+<span id="cb40-2"><a href="annorect.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb40-3"><a href="annorect.html#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="annorect.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># default plot</span></span>
+<span id="cb40-5"><a href="annorect.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> p,</span>
+<span id="cb40-6"><a href="annorect.html#cb40-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb40-7"><a href="annorect.html#cb40-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;This palatte have 20 colors!&quot;
+## [1] &quot;This palatte have 20 colors!&quot;
+## [1] &quot;This palatte have 20 colors!&quot;</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>You can <strong>adjust the yPosition</strong>:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="annorect.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># adjust yPosition</span></span>
+<span id="cb42-2"><a href="annorect.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> p,</span>
+<span id="cb42-3"><a href="annorect.html#cb42-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb42-4"><a href="annorect.html#cb42-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb42-5"><a href="annorect.html#cb42-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="dv">11</span>,<span class="fl">11.5</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;This palatte have 20 colors!&quot;
+## [1] &quot;This palatte have 20 colors!&quot;
+## [1] &quot;This palatte have 20 colors!&quot;</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Change <strong>color alpha</strong>:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="annorect.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change color alpha</span></span>
+<span id="cb44-2"><a href="annorect.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> p,</span>
+<span id="cb44-3"><a href="annorect.html#cb44-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb44-4"><a href="annorect.html#cb44-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb44-5"><a href="annorect.html#cb44-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="dv">11</span>,<span class="fl">11.5</span>),</span>
+<span id="cb44-6"><a href="annorect.html#cb44-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;This palatte have 20 colors!&quot;
+## [1] &quot;This palatte have 20 colors!&quot;
+## [1] &quot;This palatte have 20 colors!&quot;</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Set <strong>rect width</strong>:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="annorect.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># adjust rectWidth</span></span>
+<span id="cb46-2"><a href="annorect.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> p,</span>
+<span id="cb46-3"><a href="annorect.html#cb46-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb46-4"><a href="annorect.html#cb46-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb46-5"><a href="annorect.html#cb46-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="dv">11</span>,<span class="fl">11.5</span>),</span>
+<span id="cb46-6"><a href="annorect.html#cb46-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectWidth =</span> <span class="fl">0.9</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;This palatte have 20 colors!&quot;
+## [1] &quot;This palatte have 20 colors!&quot;
+## [1] &quot;This palatte have 20 colors!&quot;</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Change <strong>rect color and fill</strong>:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="annorect.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change rect color and fill</span></span>
+<span id="cb48-2"><a href="annorect.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> p,</span>
+<span id="cb48-3"><a href="annorect.html#cb48-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb48-4"><a href="annorect.html#cb48-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb48-5"><a href="annorect.html#cb48-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="dv">11</span>,<span class="fl">11.5</span>),</span>
+<span id="cb48-6"><a href="annorect.html#cb48-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectWidth =</span> <span class="fl">0.9</span>,</span>
+<span id="cb48-7"><a href="annorect.html#cb48-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">pCol =</span> <span class="fu">rep</span>(<span class="st">&#39;black&#39;</span>,<span class="dv">10</span>),</span>
+<span id="cb48-8"><a href="annorect.html#cb48-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">pFill =</span> <span class="fu">rep</span>(<span class="st">&#39;grey80&#39;</span>,<span class="dv">10</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;This palatte have 20 colors!&quot;</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Change <strong>rect lty and lwd</strong>:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="annorect.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change rect lty and lwd</span></span>
+<span id="cb50-2"><a href="annorect.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> p,</span>
+<span id="cb50-3"><a href="annorect.html#cb50-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb50-4"><a href="annorect.html#cb50-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb50-5"><a href="annorect.html#cb50-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="dv">11</span>,<span class="fl">11.5</span>),</span>
+<span id="cb50-6"><a href="annorect.html#cb50-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectWidth =</span> <span class="fl">0.9</span>,</span>
+<span id="cb50-7"><a href="annorect.html#cb50-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">pCol =</span> <span class="fu">rep</span>(<span class="st">&#39;black&#39;</span>,<span class="dv">10</span>),</span>
+<span id="cb50-8"><a href="annorect.html#cb50-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">pFill =</span> <span class="fu">rep</span>(<span class="st">&#39;grey80&#39;</span>,<span class="dv">10</span>),</span>
+<span id="cb50-9"><a href="annorect.html#cb50-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">lty =</span> <span class="st">&#39;dashed&#39;</span>,</span>
+<span id="cb50-10"><a href="annorect.html#cb50-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;This palatte have 20 colors!&quot;</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Add only <strong>partial annotations</strong>:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="annorect.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># only add some annotations</span></span>
+<span id="cb52-2"><a href="annorect.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> p,</span>
+<span id="cb52-3"><a href="annorect.html#cb52-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb52-4"><a href="annorect.html#cb52-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>),</span>
+<span id="cb52-5"><a href="annorect.html#cb52-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="dv">11</span>,<span class="fl">11.5</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;This palatte have 20 colors!&quot;
+## [1] &quot;This palatte have 20 colors!&quot;
+## [1] &quot;This palatte have 20 colors!&quot;</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Supply your <strong>own coordinates</strong> to annotate:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="annorect.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># supply your own coordinates to annotate</span></span>
+<span id="cb54-2"><a href="annorect.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> p,</span>
+<span id="cb54-3"><a href="annorect.html#cb54-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb54-4"><a href="annorect.html#cb54-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoManual =</span> T,</span>
+<span id="cb54-5"><a href="annorect.html#cb54-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">xPosition =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">6</span>),</span>
+<span id="cb54-6"><a href="annorect.html#cb54-6" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>)),</span>
+<span id="cb54-7"><a href="annorect.html#cb54-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="dv">11</span>,<span class="fl">11.5</span>),</span>
+<span id="cb54-8"><a href="annorect.html#cb54-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">pCol =</span> <span class="fu">rep</span>(<span class="st">&#39;black&#39;</span>,<span class="dv">2</span>),</span>
+<span id="cb54-9"><a href="annorect.html#cb54-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">lty =</span> <span class="st">&#39;solid&#39;</span>,</span>
+<span id="cb54-10"><a href="annorect.html#cb54-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;This palatte have 20 colors!&quot;
+## [1] &quot;This palatte have 20 colors!&quot;</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>You can supply <strong>multiple yPosition in list</strong>:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="annorect.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># multiple yPosition</span></span>
+<span id="cb56-2"><a href="annorect.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> p,</span>
+<span id="cb56-3"><a href="annorect.html#cb56-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb56-4"><a href="annorect.html#cb56-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoManual =</span> T,</span>
+<span id="cb56-5"><a href="annorect.html#cb56-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">xPosition =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">6</span>),</span>
+<span id="cb56-6"><a href="annorect.html#cb56-6" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>)),</span>
+<span id="cb56-7"><a href="annorect.html#cb56-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">11</span>,<span class="fl">11.5</span>),</span>
+<span id="cb56-8"><a href="annorect.html#cb56-8" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">c</span>(<span class="fl">11.5</span>,<span class="dv">12</span>)),</span>
+<span id="cb56-9"><a href="annorect.html#cb56-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">pCol =</span> <span class="fu">rep</span>(<span class="st">&#39;black&#39;</span>,<span class="dv">2</span>),</span>
+<span id="cb56-10"><a href="annorect.html#cb56-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">lty =</span> <span class="st">&#39;solid&#39;</span>,</span>
+<span id="cb56-11"><a href="annorect.html#cb56-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;This palatte have 20 colors!&quot;
+## [1] &quot;This palatte have 20 colors!&quot;</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Add to <strong>right</strong>:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="annorect.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add to right</span></span>
+<span id="cb58-2"><a href="annorect.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> p,</span>
+<span id="cb58-3"><a href="annorect.html#cb58-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;right&#39;</span>,</span>
+<span id="cb58-4"><a href="annorect.html#cb58-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb58-5"><a href="annorect.html#cb58-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="fl">10.5</span>,<span class="dv">11</span>),</span>
+<span id="cb58-6"><a href="annorect.html#cb58-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectWidth =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;This palatte have 20 colors!&quot;
+## [1] &quot;This palatte have 20 colors!&quot;
+## [1] &quot;This palatte have 20 colors!&quot;</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Add <strong>multiple annotations</strong>:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="annorect.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add multiple</span></span>
+<span id="cb60-2"><a href="annorect.html#cb60-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">annoRect</span>(<span class="at">object =</span> p,</span>
+<span id="cb60-3"><a href="annorect.html#cb60-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb60-4"><a href="annorect.html#cb60-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb60-5"><a href="annorect.html#cb60-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="dv">11</span>,<span class="fl">11.5</span>),</span>
+<span id="cb60-6"><a href="annorect.html#cb60-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">rectWidth =</span> <span class="fl">0.9</span>,</span>
+<span id="cb60-7"><a href="annorect.html#cb60-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">pCol =</span> <span class="fu">rep</span>(<span class="st">&#39;black&#39;</span>,<span class="dv">10</span>),</span>
+<span id="cb60-8"><a href="annorect.html#cb60-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">pFill =</span> <span class="fu">rep</span>(<span class="st">&#39;grey80&#39;</span>,<span class="dv">10</span>),</span>
+<span id="cb60-9"><a href="annorect.html#cb60-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">lty =</span> <span class="st">&#39;dashed&#39;</span>,</span>
+<span id="cb60-10"><a href="annorect.html#cb60-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;This palatte have 20 colors!&quot;</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="annorect.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add second annotation</span></span>
+<span id="cb62-2"><a href="annorect.html#cb62-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">annoRect</span>(<span class="at">object =</span> p1,</span>
+<span id="cb62-3"><a href="annorect.html#cb62-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">annoPos =</span> <span class="st">&#39;right&#39;</span>,</span>
+<span id="cb62-4"><a href="annorect.html#cb62-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb62-5"><a href="annorect.html#cb62-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="fl">10.5</span>,<span class="dv">11</span>),</span>
+<span id="cb62-6"><a href="annorect.html#cb62-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">rectWidth =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;This palatte have 20 colors!&quot;
+## [1] &quot;This palatte have 20 colors!&quot;
+## [1] &quot;This palatte have 20 colors!&quot;</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-31-2.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="annorect.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add third annotation</span></span>
+<span id="cb64-2"><a href="annorect.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> p2,</span>
+<span id="cb64-3"><a href="annorect.html#cb64-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb64-4"><a href="annorect.html#cb64-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb64-5"><a href="annorect.html#cb64-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="fl">11.8</span>,<span class="fl">12.3</span>),</span>
+<span id="cb64-6"><a href="annorect.html#cb64-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectWidth =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;This palatte have 20 colors!&quot;
+## [1] &quot;This palatte have 20 colors!&quot;
+## [1] &quot;This palatte have 20 colors!&quot;</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-31-3.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="add-go-plot-with-annotation" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> add GO plot with annotation<a href="annorect.html#add-go-plot-with-annotation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Load test data:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="annorect.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(pgo)</span>
+<span id="cb66-2"><a href="annorect.html#cb66-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-3"><a href="annorect.html#cb66-3" aria-hidden="true" tabindex="-1"></a>pgo</span></code></pre></div>
+<p><img src="https://camo.githubusercontent.com/632d517aae0c1374a2ff960c094149e67330f9de440e363b9b713375d3712b81/68747470733a2f2f66696c65732e6d646e6963652e636f6d2f757365722f31353537332f65363063653366662d383030632d343630622d393535662d6464626236353365363562642e706e67" style="width:100.0%" /></p>
+<p>Here is the plot code:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="annorect.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb67-2"><a href="annorect.html#cb67-2" aria-hidden="true" tabindex="-1"></a>pgo <span class="ot">&lt;-</span></span>
+<span id="cb67-3"><a href="annorect.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df1,<span class="fu">aes</span>(<span class="at">x =</span> log10PValue,<span class="at">y =</span> Term)) <span class="sc">+</span></span>
+<span id="cb67-4"><a href="annorect.html#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> log10PValue,</span>
+<span id="cb67-5"><a href="annorect.html#cb67-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> log10PValue)) <span class="sc">+</span></span>
+<span id="cb67-6"><a href="annorect.html#cb67-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_gradient2</span>(<span class="at">low =</span> <span class="st">&#39;blue&#39;</span>,<span class="at">mid =</span> <span class="st">&#39;green&#39;</span>,<span class="at">high =</span> <span class="st">&#39;red&#39;</span>,</span>
+<span id="cb67-7"><a href="annorect.html#cb67-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">name =</span> <span class="st">&#39;&#39;</span>,<span class="at">midpoint =</span> <span class="fl">2.1</span>) <span class="sc">+</span></span>
+<span id="cb67-8"><a href="annorect.html#cb67-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">position =</span> <span class="st">&#39;right&#39;</span>) <span class="sc">+</span></span>
+<span id="cb67-9"><a href="annorect.html#cb67-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">2.8</span>,<span class="fl">0.4</span>),<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">2.8</span>)) <span class="sc">+</span></span>
+<span id="cb67-10"><a href="annorect.html#cb67-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_grey</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb67-11"><a href="annorect.html#cb67-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;left&#39;</span>,</span>
+<span id="cb67-12"><a href="annorect.html#cb67-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">1</span>,<span class="at">r =</span> <span class="dv">1</span>,<span class="at">b =</span> <span class="dv">1</span>,<span class="at">l =</span> <span class="dv">1</span>,<span class="at">unit =</span> <span class="st">&#39;cm&#39;</span>),</span>
+<span id="cb67-13"><a href="annorect.html#cb67-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">aspect.ratio =</span> <span class="fl">2.5</span></span>
+<span id="cb67-14"><a href="annorect.html#cb67-14" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">+</span></span>
+<span id="cb67-15"><a href="annorect.html#cb67-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">clip =</span> <span class="st">&#39;off&#39;</span>) <span class="sc">+</span></span>
+<span id="cb67-16"><a href="annorect.html#cb67-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&#39;&#39;</span>)</span></code></pre></div>
+</div>
+<div id="annotate" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> annotate<a href="annorect.html#annotate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Add <strong>15 rects</strong>:</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="annorect.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># another example annotation GO terms</span></span>
+<span id="cb68-2"><a href="annorect.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> pgo,</span>
+<span id="cb68-3"><a href="annorect.html#cb68-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;right&#39;</span>,</span>
+<span id="cb68-4"><a href="annorect.html#cb68-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>),</span>
+<span id="cb68-5"><a href="annorect.html#cb68-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">pCol =</span> <span class="fu">rep</span>(<span class="st">&#39;transparent&#39;</span>,<span class="dv">15</span>),</span>
+<span id="cb68-6"><a href="annorect.html#cb68-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">pFill =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&#39;#F5F0BB&#39;</span>,<span class="st">&#39;#C4DFAA&#39;</span>,<span class="st">&#39;#90C8AC&#39;</span>),<span class="at">each =</span> <span class="dv">5</span>),</span>
+<span id="cb68-7"><a href="annorect.html#cb68-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>),</span>
+<span id="cb68-8"><a href="annorect.html#cb68-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectWidth =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="https://camo.githubusercontent.com/d2a6dcb3d6a71bf247a28ad50618eec19bd14da0e0aa52208010dfe5611f8d45/68747470733a2f2f66696c65732e6d646e6963652e636f6d2f757365722f31353537332f61313936396336352d653636322d346135392d623633622d6537363732613565666235612e706e67" style="width:100.0%" /></p>
+<p>Supply own coordinates to add<code>(3 rects)</code>:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="annorect.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># annotate mannually</span></span>
+<span id="cb69-2"><a href="annorect.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> pgo,</span>
+<span id="cb69-3"><a href="annorect.html#cb69-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;right&#39;</span>,</span>
+<span id="cb69-4"><a href="annorect.html#cb69-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoManual =</span> T,</span>
+<span id="cb69-5"><a href="annorect.html#cb69-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>),</span>
+<span id="cb69-6"><a href="annorect.html#cb69-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="fl">0.5</span>,<span class="fl">5.5</span>,<span class="fl">10.5</span>),</span>
+<span id="cb69-7"><a href="annorect.html#cb69-7" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">c</span>(<span class="fl">5.5</span>,<span class="fl">10.5</span>,<span class="fl">15.5</span>)),</span>
+<span id="cb69-8"><a href="annorect.html#cb69-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">pCol =</span> <span class="fu">rep</span>(<span class="st">&#39;black&#39;</span>,<span class="dv">3</span>),</span>
+<span id="cb69-9"><a href="annorect.html#cb69-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">pFill =</span> <span class="fu">c</span>(<span class="st">&#39;#F5F0BB&#39;</span>,<span class="st">&#39;#C4DFAA&#39;</span>,<span class="st">&#39;#90C8AC&#39;</span>))</span></code></pre></div>
+<p><img src="https://camo.githubusercontent.com/330e3a4d5827ba6f06749d04caf67ba4fca681a40c93448739b819c209317b51/68747470733a2f2f66696c65732e6d646e6963652e636f6d2f757365722f31353537332f32366634356135622d356337302d343862302d626465652d3537356338313962333037372e706e67" style="width:100.0%" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="annopoint.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="annosegment.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-annoRect.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

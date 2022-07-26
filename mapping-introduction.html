@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 mapping introduction | The documentation of jjAnno R package</title>
+  <meta name="description" content="This is a detailed documentation of jjAnno package and more paramenters examples." />
+  <meta name="generator" content="bookdown 0.27.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 mapping introduction | The documentation of jjAnno R package" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a detailed documentation of jjAnno package and more paramenters examples." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 mapping introduction | The documentation of jjAnno R package" />
+  
+  <meta name="twitter:description" content="This is a detailed documentation of jjAnno package and more paramenters examples." />
+  
+
+<meta name="author" content="Junjun Lao" />
+
+
+<meta name="date" content="2022-07-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="annolegend.html"/>
+<link rel="next" href="facet-introduction.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#installation"><i class="fa fa-check"></i><b>2.1</b> Installation</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#example"><i class="fa fa-check"></i><b>2.2</b> Example</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#example-1"><i class="fa fa-check"></i><b>2.3</b> Example</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#if-you-want-see-more-parameters-type"><i class="fa fa-check"></i><b>2.4</b> If you want see more parameters, type:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="usemycol.html"><a href="usemycol.html"><i class="fa fa-check"></i><b>3</b> useMyCol</a></li>
+<li class="chapter" data-level="4" data-path="annopoint.html"><a href="annopoint.html"><i class="fa fa-check"></i><b>4</b> annoPoint</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="annopoint.html"><a href="annopoint.html#test-data"><i class="fa fa-check"></i><b>4.1</b> test data</a></li>
+<li class="chapter" data-level="4.2" data-path="annopoint.html"><a href="annopoint.html#annotate-plot"><i class="fa fa-check"></i><b>4.2</b> annotate plot</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="annorect.html"><a href="annorect.html"><i class="fa fa-check"></i><b>5</b> annoRect</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="annorect.html"><a href="annorect.html#add-go-plot-with-annotation"><i class="fa fa-check"></i><b>5.1</b> add GO plot with annotation</a></li>
+<li class="chapter" data-level="5.2" data-path="annorect.html"><a href="annorect.html#annotate"><i class="fa fa-check"></i><b>5.2</b> annotate</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="annosegment.html"><a href="annosegment.html"><i class="fa fa-check"></i><b>6</b> annoSegment</a></li>
+<li class="chapter" data-level="7" data-path="annoimage.html"><a href="annoimage.html"><i class="fa fa-check"></i><b>7</b> annoImage</a></li>
+<li class="chapter" data-level="8" data-path="annolegend.html"><a href="annolegend.html"><i class="fa fa-check"></i><b>8</b> annoLegend</a></li>
+<li class="chapter" data-level="9" data-path="mapping-introduction.html"><a href="mapping-introduction.html"><i class="fa fa-check"></i><b>9</b> mapping introduction</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="mapping-introduction.html"><a href="mapping-introduction.html#basic-plot"><i class="fa fa-check"></i><b>9.1</b> Basic plot</a></li>
+<li class="chapter" data-level="9.2" data-path="mapping-introduction.html"><a href="mapping-introduction.html#annotate-with-annosegment"><i class="fa fa-check"></i><b>9.2</b> Annotate with annoSegment</a></li>
+<li class="chapter" data-level="9.3" data-path="mapping-introduction.html"><a href="mapping-introduction.html#annotate-with-annorect"><i class="fa fa-check"></i><b>9.3</b> Annotate with annoRect</a></li>
+<li class="chapter" data-level="9.4" data-path="mapping-introduction.html"><a href="mapping-introduction.html#annotate-with-rotated-rect"><i class="fa fa-check"></i><b>9.4</b> Annotate with rotated Rect</a></li>
+<li class="chapter" data-level="9.5" data-path="mapping-introduction.html"><a href="mapping-introduction.html#annotate-with-annopoint2"><i class="fa fa-check"></i><b>9.5</b> Annotate with annoPoint2</a></li>
+<li class="chapter" data-level="9.6" data-path="mapping-introduction.html"><a href="mapping-introduction.html#annotate-with-annotriangle"><i class="fa fa-check"></i><b>9.6</b> Annotate with annoTriangle</a></li>
+<li class="chapter" data-level="9.7" data-path="mapping-introduction.html"><a href="mapping-introduction.html#example-2"><i class="fa fa-check"></i><b>9.7</b> Example</a></li>
+<li class="chapter" data-level="9.8" data-path="mapping-introduction.html"><a href="mapping-introduction.html#end"><i class="fa fa-check"></i><b>9.8</b> End</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="facet-introduction.html"><a href="facet-introduction.html"><i class="fa fa-check"></i><b>10</b> facet introduction</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="facet-introduction.html"><a href="facet-introduction.html#basic-plot-1"><i class="fa fa-check"></i><b>10.1</b> basic plot</a></li>
+<li class="chapter" data-level="10.2" data-path="facet-introduction.html"><a href="facet-introduction.html#annopoint2"><i class="fa fa-check"></i><b>10.2</b> annoPoint2</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="facet-introduction.html"><a href="facet-introduction.html#facet-by-cellgroup"><i class="fa fa-check"></i><b>10.2.1</b> facet by cellGroup</a></li>
+<li class="chapter" data-level="10.2.2" data-path="facet-introduction.html"><a href="facet-introduction.html#facet-by-class"><i class="fa fa-check"></i><b>10.2.2</b> facet by class</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="facet-introduction.html"><a href="facet-introduction.html#annosegment-1"><i class="fa fa-check"></i><b>10.3</b> annoSegment</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="facet-introduction.html"><a href="facet-introduction.html#facet-by-cellgroup-1"><i class="fa fa-check"></i><b>10.3.1</b> facet by cellGroup</a></li>
+<li class="chapter" data-level="10.3.2" data-path="facet-introduction.html"><a href="facet-introduction.html#facet-by-class-1"><i class="fa fa-check"></i><b>10.3.2</b> facet by class</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="facet-introduction.html"><a href="facet-introduction.html#annorect-1"><i class="fa fa-check"></i><b>10.4</b> annoRect</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="facet-introduction.html"><a href="facet-introduction.html#facet-by-cellgroup-2"><i class="fa fa-check"></i><b>10.4.1</b> facet by cellGroup</a></li>
+<li class="chapter" data-level="10.4.2" data-path="facet-introduction.html"><a href="facet-introduction.html#facet-by-class-2"><i class="fa fa-check"></i><b>10.4.2</b> facet by class</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="facet-introduction.html"><a href="facet-introduction.html#annotriangle"><i class="fa fa-check"></i><b>10.5</b> annoTriangle</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="facet-introduction.html"><a href="facet-introduction.html#facet-by-cellgroup-3"><i class="fa fa-check"></i><b>10.5.1</b> facet by cellGroup</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="gradient-color-rect-introduction.html"><a href="gradient-color-rect-introduction.html"><i class="fa fa-check"></i><b>11</b> gradient color rect introduction</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="gradient-color-rect-introduction.html"><a href="gradient-color-rect-introduction.html#examples"><i class="fa fa-check"></i><b>11.1</b> Examples</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The documentation of jjAnno R package</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="mapping-introduction" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> mapping introduction<a href="mapping-introduction.html#mapping-introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Imaging that you need to <strong>supply multiple exact coordinates</strong> to add some annotations when set <strong>annoManual = T</strong> in <strong>jjAnno</strong> or in other situations. <strong>This way is not so elegant especially when you have multiple annotations</strong>. A pile of numbers will confuse you sometimes. It will be more convenient to add the annotations with an <strong>auto-annotatation mode</strong>.</p>
+<p>Here you only need to add <strong>one group column</strong> and specify this column is used to annotate your axis. <strong>jjAnno will calculate the x/y coordinates automatically which save your much time</strong>. Just a little ajustments need to be done to make your figure much pretty.</p>
+<hr />
+<p><strong>Note 1:</strong></p>
+<blockquote>
+<ul>
+<li>You should make sure that your <strong>plot x/y axis orders is correct</strong> before to annotate.</li>
+<li>Turn off the <strong>clip</strong><code>(coord_cartesian(clip = 'off'))</code>.</li>
+<li>Try to <strong>expand the plot margin</strong> if the viewplot is not wholly shown.</li>
+</ul>
+</blockquote>
+<p><strong>Note 2:</strong></p>
+<p>The <strong>mapping operation</strong> can be used on the following functions:</p>
+<blockquote>
+<ul>
+<li><strong><em>annoPoint2</em></strong></li>
+<li><strong><em>annoRect</em></strong></li>
+<li><strong><em>annoSegment</em></strong></li>
+</ul>
+</blockquote>
+<div id="basic-plot" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Basic plot<a href="mapping-introduction.html#basic-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s make a simple dot plot:</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="mapping-introduction.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb117-2"><a href="mapping-introduction.html#cb117-2" aria-hidden="true" tabindex="-1"></a>dot_data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&#39;gene-dot.txt&#39;</span>,<span class="at">header =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb117-3"><a href="mapping-introduction.html#cb117-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(class)</span>
+<span id="cb117-4"><a href="mapping-introduction.html#cb117-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-5"><a href="mapping-introduction.html#cb117-5" aria-hidden="true" tabindex="-1"></a><span class="co"># check</span></span>
+<span id="cb117-6"><a href="mapping-introduction.html#cb117-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dot_data,<span class="dv">3</span>)</span>
+<span id="cb117-7"><a href="mapping-introduction.html#cb117-7" aria-hidden="true" tabindex="-1"></a><span class="co">#         cell  gene                  class mean.expression percentage</span></span>
+<span id="cb117-8"><a href="mapping-introduction.html#cb117-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 1b CoelEpi GATA4 DMRT1 Early supporting       0.3749122   36.03614</span></span>
+<span id="cb117-9"><a href="mapping-introduction.html#cb117-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 1b CoelEpi GATA4  CPA2 Early supporting       0.7495705   95.82235</span></span>
+<span id="cb117-10"><a href="mapping-introduction.html#cb117-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 3 1b CoelEpi GATA4 GPR37 Early supporting       0.1604790   95.79420</span></span>
+<span id="cb117-11"><a href="mapping-introduction.html#cb117-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-12"><a href="mapping-introduction.html#cb117-12" aria-hidden="true" tabindex="-1"></a><span class="co"># colnames</span></span>
+<span id="cb117-13"><a href="mapping-introduction.html#cb117-13" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dot_data)</span>
+<span id="cb117-14"><a href="mapping-introduction.html#cb117-14" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] &quot;cell&quot;    &quot;gene&quot;   &quot;class&quot;    &quot;mean.expression&quot; &quot;percentage&quot;</span></span>
+<span id="cb117-15"><a href="mapping-introduction.html#cb117-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-16"><a href="mapping-introduction.html#cb117-16" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(dot_data<span class="sc">$</span>cell)</span>
+<span id="cb117-17"><a href="mapping-introduction.html#cb117-17" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] &quot;1b CoelEpi GATA4&quot; &quot;2a Early somatic&quot; &quot;2b ESGC male&quot;     &quot;2b ESGC female&quot;</span></span>
+<span id="cb117-18"><a href="mapping-introduction.html#cb117-18" aria-hidden="true" tabindex="-1"></a><span class="co"># [5] &quot;2c PreGC-I&quot;       &quot;2d Sertoil&quot;       &quot;3a Early sPAX8&quot;   &quot;3b Gi&quot;</span></span>
+<span id="cb117-19"><a href="mapping-introduction.html#cb117-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-20"><a href="mapping-introduction.html#cb117-20" aria-hidden="true" tabindex="-1"></a><span class="co"># add cell group</span></span>
+<span id="cb117-21"><a href="mapping-introduction.html#cb117-21" aria-hidden="true" tabindex="-1"></a>dot_data<span class="sc">$</span>cellGroup <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
+<span id="cb117-22"><a href="mapping-introduction.html#cb117-22" aria-hidden="true" tabindex="-1"></a>  dot_data<span class="sc">$</span>cell <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;1b CoelEpi GATA4&quot;</span>, <span class="st">&quot;2a Early somatic&quot;</span>, <span class="st">&quot;2b ESGC male&quot;</span>) <span class="sc">~</span> <span class="st">&quot;cell type1&quot;</span>,</span>
+<span id="cb117-23"><a href="mapping-introduction.html#cb117-23" aria-hidden="true" tabindex="-1"></a>  dot_data<span class="sc">$</span>cell <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;2b ESGC female&quot;</span>, <span class="st">&quot;2c PreGC-I&quot;</span>, <span class="st">&quot;2d Sertoil&quot;</span>)  <span class="sc">~</span> <span class="st">&quot;cell type2&quot;</span>,</span>
+<span id="cb117-24"><a href="mapping-introduction.html#cb117-24" aria-hidden="true" tabindex="-1"></a>  dot_data<span class="sc">$</span>cell <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;3a Early sPAX8&quot;</span>, <span class="st">&quot;3b Gi&quot;</span>)  <span class="sc">~</span> <span class="st">&quot;cell type3&quot;</span></span>
+<span id="cb117-25"><a href="mapping-introduction.html#cb117-25" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>We should make the order to be shown correctly:</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="mapping-introduction.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># order</span></span>
+<span id="cb118-2"><a href="mapping-introduction.html#cb118-2" aria-hidden="true" tabindex="-1"></a>dot_data<span class="sc">$</span>gene <span class="ot">&lt;-</span> <span class="fu">factor</span>(dot_data<span class="sc">$</span>gene,<span class="at">levels =</span> <span class="fu">unique</span>(dot_data<span class="sc">$</span>gene))</span></code></pre></div>
+<p>Plot:</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="mapping-introduction.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb119-2"><a href="mapping-introduction.html#cb119-2" aria-hidden="true" tabindex="-1"></a>pdot <span class="ot">&lt;-</span></span>
+<span id="cb119-3"><a href="mapping-introduction.html#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dot_data,<span class="fu">aes</span>(<span class="at">x =</span> gene,<span class="at">y =</span> cell)) <span class="sc">+</span></span>
+<span id="cb119-4"><a href="mapping-introduction.html#cb119-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">fill =</span> mean.expression,<span class="at">size =</span> percentage),</span>
+<span id="cb119-5"><a href="mapping-introduction.html#cb119-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">&#39;black&#39;</span>,</span>
+<span id="cb119-6"><a href="mapping-introduction.html#cb119-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb119-7"><a href="mapping-introduction.html#cb119-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb119-8"><a href="mapping-introduction.html#cb119-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&#39;&#39;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&#39;&#39;</span>) <span class="sc">+</span></span>
+<span id="cb119-9"><a href="mapping-introduction.html#cb119-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">&#39;white&#39;</span>,<span class="at">mid =</span> <span class="st">&#39;#EB1D36&#39;</span>,<span class="at">high =</span> <span class="st">&#39;#990000&#39;</span>,</span>
+<span id="cb119-10"><a href="mapping-introduction.html#cb119-10" aria-hidden="true" tabindex="-1"></a>                         <span class="at">midpoint =</span> <span class="fl">0.5</span>,</span>
+<span id="cb119-11"><a href="mapping-introduction.html#cb119-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">name =</span> <span class="st">&#39;Mean expression&#39;</span>) <span class="sc">+</span></span>
+<span id="cb119-12"><a href="mapping-introduction.html#cb119-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">13</span>)) <span class="sc">+</span></span>
+<span id="cb119-13"><a href="mapping-introduction.html#cb119-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb119-14"><a href="mapping-introduction.html#cb119-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&#39;black&#39;</span>),</span>
+<span id="cb119-15"><a href="mapping-introduction.html#cb119-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">aspect.ratio =</span> <span class="fl">0.5</span>,</span>
+<span id="cb119-16"><a href="mapping-introduction.html#cb119-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">1</span>,<span class="at">r =</span> <span class="dv">1</span>,<span class="at">b =</span> <span class="dv">1</span>,<span class="at">l =</span> <span class="dv">1</span>,<span class="at">unit =</span> <span class="st">&#39;cm&#39;</span>),</span>
+<span id="cb119-17"><a href="mapping-introduction.html#cb119-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>,<span class="at">hjust =</span> <span class="dv">1</span>,<span class="at">vjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb119-18"><a href="mapping-introduction.html#cb119-18" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">face =</span> <span class="st">&#39;italic&#39;</span>)) <span class="sc">+</span></span>
+<span id="cb119-19"><a href="mapping-introduction.html#cb119-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">clip =</span> <span class="st">&#39;off&#39;</span>)</span>
+<span id="cb119-20"><a href="mapping-introduction.html#cb119-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-21"><a href="mapping-introduction.html#cb119-21" aria-hidden="true" tabindex="-1"></a>pdot</span></code></pre></div>
+<p><img src="local_images/1.png" style="width:100.0%" /></p>
+<p>Or you can load the test data in <strong>jjAnno</strong> package:</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="mapping-introduction.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jjAnno)</span>
+<span id="cb120-2"><a href="mapping-introduction.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb120-3"><a href="mapping-introduction.html#cb120-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-4"><a href="mapping-introduction.html#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;pdot&quot;</span>)</span></code></pre></div>
+<p>Here we use column <strong>“class”</strong> and <strong>“cellGroup”</strong> to annotate X and Y axis.</p>
+</div>
+<div id="annotate-with-annosegment" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Annotate with annoSegment<a href="mapping-introduction.html#annotate-with-annosegment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Some segment annotation examples:</strong></p>
+<p><img src="local_images/2.png" style="width:100.0%" /></p>
+<p><img src="local_images/3.png" style="width:100.0%" /></p>
+<blockquote>
+<p><strong>Reference:</strong> <em>Single-cell roadmap of human gonadal development</em></p>
+</blockquote>
+<p>Add segment with <strong>aesGroup = T</strong> and <strong>aesGroName = ‘class’</strong>, we <strong>do not need to supply x coordinate</strong> and set <strong>annoManual = T</strong> anymore:</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="mapping-introduction.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pdot &lt;- pdot +</span></span>
+<span id="cb121-2"><a href="mapping-introduction.html#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme(aspect.ratio = NULL)</span></span>
+<span id="cb121-3"><a href="mapping-introduction.html#cb121-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb121-4"><a href="mapping-introduction.html#cb121-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-5"><a href="mapping-introduction.html#cb121-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add segment</span></span>
+<span id="cb121-6"><a href="mapping-introduction.html#cb121-6" aria-hidden="true" tabindex="-1"></a><span class="fu">annoSegment</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb121-7"><a href="mapping-introduction.html#cb121-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb121-8"><a href="mapping-introduction.html#cb121-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">aesGroup =</span> T,</span>
+<span id="cb121-9"><a href="mapping-introduction.html#cb121-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">aesGroName =</span> <span class="st">&#39;class&#39;</span>,</span>
+<span id="cb121-10"><a href="mapping-introduction.html#cb121-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">yPosition =</span> <span class="fl">8.8</span>,</span>
+<span id="cb121-11"><a href="mapping-introduction.html#cb121-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">segWidth =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="local_images/4.png" style="width:100.0%" /></p>
+<p>Add branch:</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="mapping-introduction.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add branch</span></span>
+<span id="cb122-2"><a href="mapping-introduction.html#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoSegment</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb122-3"><a href="mapping-introduction.html#cb122-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb122-4"><a href="mapping-introduction.html#cb122-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">aesGroup =</span> T,</span>
+<span id="cb122-5"><a href="mapping-introduction.html#cb122-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">aesGroName =</span> <span class="st">&#39;class&#39;</span>,</span>
+<span id="cb122-6"><a href="mapping-introduction.html#cb122-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">yPosition =</span> <span class="fl">8.8</span>,</span>
+<span id="cb122-7"><a href="mapping-introduction.html#cb122-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">segWidth =</span> <span class="fl">0.5</span>,</span>
+<span id="cb122-8"><a href="mapping-introduction.html#cb122-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">addBranch =</span> T,</span>
+<span id="cb122-9"><a href="mapping-introduction.html#cb122-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb122-10"><a href="mapping-introduction.html#cb122-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">branDirection =</span> <span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb122-11"><a href="mapping-introduction.html#cb122-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">pCol =</span> <span class="fu">rep</span>(<span class="st">&#39;black&#39;</span>,<span class="dv">11</span>))</span></code></pre></div>
+<p><img src="local_images/5.png" style="width:100.0%" /></p>
+<p>Add text label:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="mapping-introduction.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add text</span></span>
+<span id="cb123-2"><a href="mapping-introduction.html#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoSegment</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb123-3"><a href="mapping-introduction.html#cb123-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb123-4"><a href="mapping-introduction.html#cb123-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">aesGroup =</span> T,</span>
+<span id="cb123-5"><a href="mapping-introduction.html#cb123-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">aesGroName =</span> <span class="st">&#39;class&#39;</span>,</span>
+<span id="cb123-6"><a href="mapping-introduction.html#cb123-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">yPosition =</span> <span class="fl">8.8</span>,</span>
+<span id="cb123-7"><a href="mapping-introduction.html#cb123-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">segWidth =</span> <span class="fl">0.5</span>,</span>
+<span id="cb123-8"><a href="mapping-introduction.html#cb123-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">addText =</span> T,</span>
+<span id="cb123-9"><a href="mapping-introduction.html#cb123-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">textRot =</span> <span class="dv">45</span>,</span>
+<span id="cb123-10"><a href="mapping-introduction.html#cb123-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">hjust =</span> <span class="dv">0</span>)</span></code></pre></div>
+<p><img src="local_images/6.png" style="width:100.0%" /></p>
+<p>Mapping with <strong>cellGroup</strong>:</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="mapping-introduction.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mapping cell group</span></span>
+<span id="cb124-2"><a href="mapping-introduction.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoSegment</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb124-3"><a href="mapping-introduction.html#cb124-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">annoPos =</span> <span class="st">&#39;left&#39;</span>,</span>
+<span id="cb124-4"><a href="mapping-introduction.html#cb124-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">aesGroup =</span> T,</span>
+<span id="cb124-5"><a href="mapping-introduction.html#cb124-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">aesGroName =</span> <span class="st">&#39;cellGroup&#39;</span>,</span>
+<span id="cb124-6"><a href="mapping-introduction.html#cb124-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">xPosition =</span> <span class="sc">-</span><span class="fl">3.5</span>,</span>
+<span id="cb124-7"><a href="mapping-introduction.html#cb124-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">segWidth =</span> <span class="fl">0.5</span>,</span>
+<span id="cb124-8"><a href="mapping-introduction.html#cb124-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">addText =</span> T,</span>
+<span id="cb124-9"><a href="mapping-introduction.html#cb124-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">textRot =</span> <span class="dv">90</span>,</span>
+<span id="cb124-10"><a href="mapping-introduction.html#cb124-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">textHVjust =</span> <span class="sc">-</span><span class="fl">0.5</span>,</span>
+<span id="cb124-11"><a href="mapping-introduction.html#cb124-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">textSize =</span> <span class="dv">14</span>)</span></code></pre></div>
+<p><img src="local_images/7.png" style="width:100.0%" /></p>
+</div>
+<div id="annotate-with-annorect" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Annotate with annoRect<a href="mapping-introduction.html#annotate-with-annorect" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Some rect annotation examples:</strong></p>
+<p><img src="local_images/8.png" style="width:100.0%" /></p>
+<blockquote>
+<p><strong>Reference:</strong> <em>Single-cell roadmap of human gonadal development</em></p>
+</blockquote>
+<p>Mapping with <strong>class</strong>:</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="mapping-introduction.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mapping by group</span></span>
+<span id="cb125-2"><a href="mapping-introduction.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb125-3"><a href="mapping-introduction.html#cb125-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb125-4"><a href="mapping-introduction.html#cb125-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroup =</span> T,</span>
+<span id="cb125-5"><a href="mapping-introduction.html#cb125-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroName =</span> <span class="st">&#39;class&#39;</span>,</span>
+<span id="cb125-6"><a href="mapping-introduction.html#cb125-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="dv">9</span>,<span class="fl">9.5</span>),</span>
+<span id="cb125-7"><a href="mapping-introduction.html#cb125-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectWidth =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<p><img src="local_images/9.png" style="width:100.0%" /></p>
+<p>Use <strong>roundRect</strong> to add roundCorner rect:</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="mapping-introduction.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add round rect</span></span>
+<span id="cb126-2"><a href="mapping-introduction.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb126-3"><a href="mapping-introduction.html#cb126-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb126-4"><a href="mapping-introduction.html#cb126-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroup =</span> T,</span>
+<span id="cb126-5"><a href="mapping-introduction.html#cb126-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroName =</span> <span class="st">&#39;class&#39;</span>,</span>
+<span id="cb126-6"><a href="mapping-introduction.html#cb126-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="dv">9</span>,<span class="fl">9.5</span>),</span>
+<span id="cb126-7"><a href="mapping-introduction.html#cb126-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectWidth =</span> <span class="fl">0.8</span>,</span>
+<span id="cb126-8"><a href="mapping-introduction.html#cb126-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">roundRect =</span> T)</span></code></pre></div>
+<p><img src="local_images/10.png" style="width:100.0%" /></p>
+<p>You can <strong>change the corner radius</strong>:</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="mapping-introduction.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change corner radius</span></span>
+<span id="cb127-2"><a href="mapping-introduction.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb127-3"><a href="mapping-introduction.html#cb127-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb127-4"><a href="mapping-introduction.html#cb127-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroup =</span> T,</span>
+<span id="cb127-5"><a href="mapping-introduction.html#cb127-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroName =</span> <span class="st">&#39;class&#39;</span>,</span>
+<span id="cb127-6"><a href="mapping-introduction.html#cb127-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="dv">9</span>,<span class="fl">9.5</span>),</span>
+<span id="cb127-7"><a href="mapping-introduction.html#cb127-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectWidth =</span> <span class="fl">0.8</span>,</span>
+<span id="cb127-8"><a href="mapping-introduction.html#cb127-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">roundRect =</span> T,</span>
+<span id="cb127-9"><a href="mapping-introduction.html#cb127-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">roundRadius =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="local_images/11.png" style="width:100.0%" /></p>
+<p>Add to <strong>botomn</strong>:</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="mapping-introduction.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add to botomn</span></span>
+<span id="cb128-2"><a href="mapping-introduction.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb128-3"><a href="mapping-introduction.html#cb128-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;botomn&#39;</span>,</span>
+<span id="cb128-4"><a href="mapping-introduction.html#cb128-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroup =</span> T,</span>
+<span id="cb128-5"><a href="mapping-introduction.html#cb128-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroName =</span> <span class="st">&#39;class&#39;</span>,</span>
+<span id="cb128-6"><a href="mapping-introduction.html#cb128-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="fl">0.25</span>),</span>
+<span id="cb128-7"><a href="mapping-introduction.html#cb128-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectWidth =</span> <span class="fl">0.8</span>,</span>
+<span id="cb128-8"><a href="mapping-introduction.html#cb128-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">alpha =</span> <span class="fl">0.35</span>)</span></code></pre></div>
+<p><img src="local_images/12.png" style="width:100.0%" /></p>
+<p><strong>annoRect</strong> can also add text label <strong>now</strong>:</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="mapping-introduction.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add text label</span></span>
+<span id="cb129-2"><a href="mapping-introduction.html#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb129-3"><a href="mapping-introduction.html#cb129-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb129-4"><a href="mapping-introduction.html#cb129-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroup =</span> T,</span>
+<span id="cb129-5"><a href="mapping-introduction.html#cb129-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroName =</span> <span class="st">&#39;class&#39;</span>,</span>
+<span id="cb129-6"><a href="mapping-introduction.html#cb129-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="dv">9</span>,<span class="fl">9.5</span>),</span>
+<span id="cb129-7"><a href="mapping-introduction.html#cb129-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectWidth =</span> <span class="fl">0.8</span>,</span>
+<span id="cb129-8"><a href="mapping-introduction.html#cb129-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">addText =</span> T,</span>
+<span id="cb129-9"><a href="mapping-introduction.html#cb129-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">textRot =</span> <span class="dv">45</span>,</span>
+<span id="cb129-10"><a href="mapping-introduction.html#cb129-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb129-11"><a href="mapping-introduction.html#cb129-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">textCol =</span> <span class="fu">rep</span>(<span class="st">&#39;black&#39;</span>,<span class="dv">11</span>),</span>
+<span id="cb129-12"><a href="mapping-introduction.html#cb129-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">textHVjust =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="local_images/13.png" style="width:100.0%" /></p>
+<p>Mapping with <strong>cellGroup</strong>:</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="mapping-introduction.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mapping cell group</span></span>
+<span id="cb130-2"><a href="mapping-introduction.html#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb130-3"><a href="mapping-introduction.html#cb130-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;left&#39;</span>,</span>
+<span id="cb130-4"><a href="mapping-introduction.html#cb130-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroup =</span> T,</span>
+<span id="cb130-5"><a href="mapping-introduction.html#cb130-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroName =</span> <span class="st">&#39;cellGroup&#39;</span>,</span>
+<span id="cb130-6"><a href="mapping-introduction.html#cb130-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">3.5</span>,<span class="fl">0.25</span>),</span>
+<span id="cb130-7"><a href="mapping-introduction.html#cb130-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">alpha =</span> <span class="fl">0.3</span>,</span>
+<span id="cb130-8"><a href="mapping-introduction.html#cb130-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectWidth =</span> <span class="fl">0.8</span>,</span>
+<span id="cb130-9"><a href="mapping-introduction.html#cb130-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">addText =</span> T,</span>
+<span id="cb130-10"><a href="mapping-introduction.html#cb130-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">textRot =</span> <span class="dv">90</span>,</span>
+<span id="cb130-11"><a href="mapping-introduction.html#cb130-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">textSize =</span> <span class="dv">14</span>,</span>
+<span id="cb130-12"><a href="mapping-introduction.html#cb130-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">textCol =</span> <span class="fu">rep</span>(<span class="st">&#39;black&#39;</span>,<span class="dv">3</span>),</span>
+<span id="cb130-13"><a href="mapping-introduction.html#cb130-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">textHVjust =</span> <span class="sc">-</span><span class="fl">2.3</span>)</span></code></pre></div>
+<p><img src="local_images/14.png" style="width:100.0%" /></p>
+</div>
+<div id="annotate-with-rotated-rect" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Annotate with rotated Rect<a href="mapping-introduction.html#annotate-with-rotated-rect" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you have <strong>rotated the axis text before annotatation</strong>, <strong>the text labels will do not match the rect region</strong> when you add rect annotations. Here I supply a <strong>rotateRect</strong> parameter to rotate the rect <strong>with a matched degree</strong> to produce a will-matched plot.</p>
+<p>First we <strong>move the text label to the top</strong>:</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="mapping-introduction.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rotate the x text label(top)</span></span>
+<span id="cb131-2"><a href="mapping-introduction.html#cb131-2" aria-hidden="true" tabindex="-1"></a>pdot_test <span class="ot">&lt;-</span></span>
+<span id="cb131-3"><a href="mapping-introduction.html#cb131-3" aria-hidden="true" tabindex="-1"></a>  pdot <span class="sc">+</span></span>
+<span id="cb131-4"><a href="mapping-introduction.html#cb131-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">position =</span> <span class="st">&#39;top&#39;</span>) <span class="sc">+</span></span>
+<span id="cb131-5"><a href="mapping-introduction.html#cb131-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">60</span>,<span class="at">hjust =</span> <span class="dv">0</span>))</span>
+<span id="cb131-6"><a href="mapping-introduction.html#cb131-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-7"><a href="mapping-introduction.html#cb131-7" aria-hidden="true" tabindex="-1"></a>pdot_test</span></code></pre></div>
+<p><img src="local_images/15.png" style="width:100.0%" /></p>
+<p>Let’s add a rect annotation:</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="mapping-introduction.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co"># normal rect annotation</span></span>
+<span id="cb132-2"><a href="mapping-introduction.html#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> pdot_test,</span>
+<span id="cb132-3"><a href="mapping-introduction.html#cb132-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb132-4"><a href="mapping-introduction.html#cb132-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroup =</span> T,</span>
+<span id="cb132-5"><a href="mapping-introduction.html#cb132-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroName =</span> <span class="st">&#39;class&#39;</span>,</span>
+<span id="cb132-6"><a href="mapping-introduction.html#cb132-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="fl">8.6</span>,<span class="fl">10.5</span>))</span></code></pre></div>
+<p><img src="local_images/16.png" style="width:100.0%" /></p>
+<p>Now <strong>rotate the rect</strong>:</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="mapping-introduction.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rotate rect</span></span>
+<span id="cb133-2"><a href="mapping-introduction.html#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> pdot_test,</span>
+<span id="cb133-3"><a href="mapping-introduction.html#cb133-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb133-4"><a href="mapping-introduction.html#cb133-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroup =</span> T,</span>
+<span id="cb133-5"><a href="mapping-introduction.html#cb133-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroName =</span> <span class="st">&#39;class&#39;</span>,</span>
+<span id="cb133-6"><a href="mapping-introduction.html#cb133-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="fl">8.6</span>,<span class="fl">10.4</span>),</span>
+<span id="cb133-7"><a href="mapping-introduction.html#cb133-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">rotateRect =</span> T)</span></code></pre></div>
+<p><img src="local_images/17.png" style="width:100.0%" /></p>
+<p><strong>Ajust the rect width</strong>:</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="mapping-introduction.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ajust width</span></span>
+<span id="cb134-2"><a href="mapping-introduction.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> pdot_test,</span>
+<span id="cb134-3"><a href="mapping-introduction.html#cb134-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb134-4"><a href="mapping-introduction.html#cb134-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroup =</span> T,</span>
+<span id="cb134-5"><a href="mapping-introduction.html#cb134-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroName =</span> <span class="st">&#39;class&#39;</span>,</span>
+<span id="cb134-6"><a href="mapping-introduction.html#cb134-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="fl">8.6</span>,<span class="fl">10.4</span>),</span>
+<span id="cb134-7"><a href="mapping-introduction.html#cb134-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">rotateRect =</span> T,</span>
+<span id="cb134-8"><a href="mapping-introduction.html#cb134-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb134-9"><a href="mapping-introduction.html#cb134-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectWidth =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<p><img src="local_images/18.png" style="width:100.0%" /></p>
+<p>You can <strong>specify a degree you want</strong>:</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="mapping-introduction.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># supply a rotate degree</span></span>
+<span id="cb135-2"><a href="mapping-introduction.html#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> pdot_test,</span>
+<span id="cb135-3"><a href="mapping-introduction.html#cb135-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb135-4"><a href="mapping-introduction.html#cb135-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroup =</span> T,</span>
+<span id="cb135-5"><a href="mapping-introduction.html#cb135-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroName =</span> <span class="st">&#39;class&#39;</span>,</span>
+<span id="cb135-6"><a href="mapping-introduction.html#cb135-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="fl">8.6</span>,<span class="fl">10.4</span>),</span>
+<span id="cb135-7"><a href="mapping-introduction.html#cb135-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">rotateRect =</span> T,</span>
+<span id="cb135-8"><a href="mapping-introduction.html#cb135-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb135-9"><a href="mapping-introduction.html#cb135-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectWidth =</span> <span class="fl">0.9</span>,</span>
+<span id="cb135-10"><a href="mapping-introduction.html#cb135-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectAngle =</span> <span class="dv">20</span>)</span></code></pre></div>
+<p><img src="local_images/19.png" style="width:100.0%" /></p>
+<p>Ypu can also <strong>shift the rect</strong> with <code>horizotal</code> or <code>vertical</code> direction:</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="mapping-introduction.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># shift the rotated rect</span></span>
+<span id="cb136-2"><a href="mapping-introduction.html#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> pdot_test,</span>
+<span id="cb136-3"><a href="mapping-introduction.html#cb136-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb136-4"><a href="mapping-introduction.html#cb136-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroup =</span> T,</span>
+<span id="cb136-5"><a href="mapping-introduction.html#cb136-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroName =</span> <span class="st">&#39;class&#39;</span>,</span>
+<span id="cb136-6"><a href="mapping-introduction.html#cb136-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="fl">8.6</span>,<span class="fl">10.4</span>),</span>
+<span id="cb136-7"><a href="mapping-introduction.html#cb136-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">rotateRect =</span> T,</span>
+<span id="cb136-8"><a href="mapping-introduction.html#cb136-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb136-9"><a href="mapping-introduction.html#cb136-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectWidth =</span> <span class="fl">0.9</span>,</span>
+<span id="cb136-10"><a href="mapping-introduction.html#cb136-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectAngle =</span> <span class="dv">50</span>,</span>
+<span id="cb136-11"><a href="mapping-introduction.html#cb136-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">normRectShift =</span> <span class="fl">0.3</span>)</span></code></pre></div>
+<p><img src="local_images/20.png" style="width:100.0%" /></p>
+<p><strong>Adding the group text label</strong> if you want:</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="mapping-introduction.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add group label</span></span>
+<span id="cb137-2"><a href="mapping-introduction.html#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> pdot_test,</span>
+<span id="cb137-3"><a href="mapping-introduction.html#cb137-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb137-4"><a href="mapping-introduction.html#cb137-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroup =</span> T,</span>
+<span id="cb137-5"><a href="mapping-introduction.html#cb137-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroName =</span> <span class="st">&#39;class&#39;</span>,</span>
+<span id="cb137-6"><a href="mapping-introduction.html#cb137-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="fl">8.6</span>,<span class="fl">10.4</span>),</span>
+<span id="cb137-7"><a href="mapping-introduction.html#cb137-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">rotateRect =</span> T,</span>
+<span id="cb137-8"><a href="mapping-introduction.html#cb137-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb137-9"><a href="mapping-introduction.html#cb137-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectWidth =</span> <span class="fl">0.9</span>,</span>
+<span id="cb137-10"><a href="mapping-introduction.html#cb137-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectAngle =</span> <span class="dv">50</span>,</span>
+<span id="cb137-11"><a href="mapping-introduction.html#cb137-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">normRectShift =</span> <span class="fl">0.15</span>,</span>
+<span id="cb137-12"><a href="mapping-introduction.html#cb137-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">addText =</span> T,</span>
+<span id="cb137-13"><a href="mapping-introduction.html#cb137-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">textHVjust =</span> <span class="dv">1</span>,</span>
+<span id="cb137-14"><a href="mapping-introduction.html#cb137-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">textRot =</span> <span class="dv">60</span>,</span>
+<span id="cb137-15"><a href="mapping-introduction.html#cb137-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb137-16"><a href="mapping-introduction.html#cb137-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">textShift =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="local_images/21.png" style="width:100.0%" /></p>
+<p><strong>Adding to the bottom</strong>:</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="mapping-introduction.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rotate the x text label(bottom)</span></span>
+<span id="cb138-2"><a href="mapping-introduction.html#cb138-2" aria-hidden="true" tabindex="-1"></a>pdot_test <span class="ot">&lt;-</span></span>
+<span id="cb138-3"><a href="mapping-introduction.html#cb138-3" aria-hidden="true" tabindex="-1"></a>  pdot <span class="sc">+</span></span>
+<span id="cb138-4"><a href="mapping-introduction.html#cb138-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>,<span class="at">hjust =</span> <span class="dv">1</span>,<span class="at">vjust =</span> <span class="dv">1</span>))</span>
+<span id="cb138-5"><a href="mapping-introduction.html#cb138-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-6"><a href="mapping-introduction.html#cb138-6" aria-hidden="true" tabindex="-1"></a><span class="co"># add to bottom</span></span>
+<span id="cb138-7"><a href="mapping-introduction.html#cb138-7" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> pdot_test,</span>
+<span id="cb138-8"><a href="mapping-introduction.html#cb138-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;botomn&#39;</span>,</span>
+<span id="cb138-9"><a href="mapping-introduction.html#cb138-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroup =</span> T,</span>
+<span id="cb138-10"><a href="mapping-introduction.html#cb138-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroName =</span> <span class="st">&#39;class&#39;</span>,</span>
+<span id="cb138-11"><a href="mapping-introduction.html#cb138-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.3</span>,<span class="fl">0.3</span>),</span>
+<span id="cb138-12"><a href="mapping-introduction.html#cb138-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">rotateRect =</span> T,</span>
+<span id="cb138-13"><a href="mapping-introduction.html#cb138-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb138-14"><a href="mapping-introduction.html#cb138-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectWidth =</span> <span class="fl">0.9</span>)</span></code></pre></div>
+<p><img src="local_images/22.png" style="width:100.0%" /></p>
+<p><strong>Adding to the left</strong>, you should ajust the <strong>rectAngle</strong> and <strong>rotatedRectShift</strong> for several times to get a perfect preference:</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="mapping-introduction.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rotate the y text label(left)</span></span>
+<span id="cb139-2"><a href="mapping-introduction.html#cb139-2" aria-hidden="true" tabindex="-1"></a>pdot_test <span class="ot">&lt;-</span></span>
+<span id="cb139-3"><a href="mapping-introduction.html#cb139-3" aria-hidden="true" tabindex="-1"></a>  pdot <span class="sc">+</span></span>
+<span id="cb139-4"><a href="mapping-introduction.html#cb139-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>,<span class="at">hjust =</span> <span class="dv">1</span>))</span>
+<span id="cb139-5"><a href="mapping-introduction.html#cb139-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb139-6"><a href="mapping-introduction.html#cb139-6" aria-hidden="true" tabindex="-1"></a><span class="co"># rotate the rect</span></span>
+<span id="cb139-7"><a href="mapping-introduction.html#cb139-7" aria-hidden="true" tabindex="-1"></a><span class="fu">annoRect</span>(<span class="at">object =</span> pdot_test,</span>
+<span id="cb139-8"><a href="mapping-introduction.html#cb139-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">annoPos =</span> <span class="st">&#39;left&#39;</span>,</span>
+<span id="cb139-9"><a href="mapping-introduction.html#cb139-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroup =</span> T,</span>
+<span id="cb139-10"><a href="mapping-introduction.html#cb139-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">aesGroName =</span> <span class="st">&#39;cellGroup&#39;</span>,</span>
+<span id="cb139-11"><a href="mapping-introduction.html#cb139-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">3.5</span>,<span class="fl">0.3</span>),</span>
+<span id="cb139-12"><a href="mapping-introduction.html#cb139-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">rotateRect =</span> T,</span>
+<span id="cb139-13"><a href="mapping-introduction.html#cb139-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb139-14"><a href="mapping-introduction.html#cb139-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectWidth =</span> <span class="fl">0.8</span>,</span>
+<span id="cb139-15"><a href="mapping-introduction.html#cb139-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">rectAngle =</span> <span class="dv">20</span>,</span>
+<span id="cb139-16"><a href="mapping-introduction.html#cb139-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">rotatedRectShift =</span> <span class="fl">2.8</span>)</span></code></pre></div>
+<p><img src="local_images/23.png" style="width:100.0%" /></p>
+</div>
+<div id="annotate-with-annopoint2" class="section level2 hasAnchor" number="9.5">
+<h2><span class="header-section-number">9.5</span> Annotate with annoPoint2<a href="mapping-introduction.html#annotate-with-annopoint2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Some point annotation examples:</strong></p>
+<p><img src="local_images/24.png" style="width:100.0%" /></p>
+<blockquote>
+<p><strong>Reference:</strong> <em>Molecular logic of cellular diversification in the mouse cerebral cortex</em></p>
+</blockquote>
+<p>Here I have made some improvements on the <strong>annoPoint</strong> function which make it upgrade into <strong>annoPoint2</strong>. But the <strong>annoPoint</strong> function still in this package and works well. The <strong>annoPoint2</strong> can also be used to annotate plot <strong>with your group columns</strong>. The follwing examples show you:</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="mapping-introduction.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mapping with class</span></span>
+<span id="cb140-2"><a href="mapping-introduction.html#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoPoint2</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb140-3"><a href="mapping-introduction.html#cb140-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb140-4"><a href="mapping-introduction.html#cb140-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">aesGroup =</span> T,</span>
+<span id="cb140-5"><a href="mapping-introduction.html#cb140-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">aesGroName =</span> <span class="st">&#39;class&#39;</span>)</span></code></pre></div>
+<p><img src="local_images/25.png" style="width:100.0%" /></p>
+<p>You can also <strong>turn on the shape mapping</strong>:</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="mapping-introduction.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="co"># turn on shape mapping</span></span>
+<span id="cb141-2"><a href="mapping-introduction.html#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoPoint2</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb141-3"><a href="mapping-introduction.html#cb141-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb141-4"><a href="mapping-introduction.html#cb141-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">aesGroup =</span> T,</span>
+<span id="cb141-5"><a href="mapping-introduction.html#cb141-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">aesGroName =</span> <span class="st">&#39;class&#39;</span>,</span>
+<span id="cb141-6"><a href="mapping-introduction.html#cb141-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">yPosition =</span> <span class="dv">9</span>,</span>
+<span id="cb141-7"><a href="mapping-introduction.html#cb141-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">aesShape =</span> T,</span>
+<span id="cb141-8"><a href="mapping-introduction.html#cb141-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">ptSize =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="local_images/26.png" style="width:100.0%" /></p>
+<p>Add text label:</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="mapping-introduction.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add text label</span></span>
+<span id="cb142-2"><a href="mapping-introduction.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoPoint2</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb142-3"><a href="mapping-introduction.html#cb142-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb142-4"><a href="mapping-introduction.html#cb142-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">aesGroup =</span> T,</span>
+<span id="cb142-5"><a href="mapping-introduction.html#cb142-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">aesGroName =</span> <span class="st">&#39;class&#39;</span>,</span>
+<span id="cb142-6"><a href="mapping-introduction.html#cb142-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">ptSize =</span> <span class="dv">2</span>,</span>
+<span id="cb142-7"><a href="mapping-introduction.html#cb142-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">yPosition =</span> <span class="dv">9</span>,</span>
+<span id="cb142-8"><a href="mapping-introduction.html#cb142-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">addText =</span> T,</span>
+<span id="cb142-9"><a href="mapping-introduction.html#cb142-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">textRot =</span> <span class="dv">45</span>,</span>
+<span id="cb142-10"><a href="mapping-introduction.html#cb142-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb142-11"><a href="mapping-introduction.html#cb142-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">textHVjust =</span> <span class="fl">0.4</span>)</span></code></pre></div>
+<p><img src="local_images/27.png" style="width:100.0%" /></p>
+<p><strong>Mapping with cellGroup</strong>:</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="mapping-introduction.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mapping with cellGroup</span></span>
+<span id="cb143-2"><a href="mapping-introduction.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoPoint2</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb143-3"><a href="mapping-introduction.html#cb143-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">annoPos =</span> <span class="st">&#39;left&#39;</span>,</span>
+<span id="cb143-4"><a href="mapping-introduction.html#cb143-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">aesGroup =</span> T,</span>
+<span id="cb143-5"><a href="mapping-introduction.html#cb143-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">aesGroName =</span> <span class="st">&#39;cellGroup&#39;</span>,</span>
+<span id="cb143-6"><a href="mapping-introduction.html#cb143-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">xPosition =</span> <span class="sc">-</span><span class="fl">2.8</span>)</span></code></pre></div>
+<p><img src="local_images/28.png" style="width:100.0%" /></p>
+<p>If you want to <strong>put the point annotation between the text and aixs</strong>, you should first <strong>expand the space between axis text and axis line</strong>:</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="mapping-introduction.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb144-2"><a href="mapping-introduction.html#cb144-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-3"><a href="mapping-introduction.html#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="co"># expand y axis text space</span></span>
+<span id="cb144-4"><a href="mapping-introduction.html#cb144-4" aria-hidden="true" tabindex="-1"></a>pdot1 <span class="ot">&lt;-</span></span>
+<span id="cb144-5"><a href="mapping-introduction.html#cb144-5" aria-hidden="true" tabindex="-1"></a>  pdot <span class="sc">+</span></span>
+<span id="cb144-6"><a href="mapping-introduction.html#cb144-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r =</span> <span class="dv">1</span>,<span class="at">unit =</span> <span class="st">&#39;cm&#39;</span>)))</span>
+<span id="cb144-7"><a href="mapping-introduction.html#cb144-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-8"><a href="mapping-introduction.html#cb144-8" aria-hidden="true" tabindex="-1"></a><span class="co"># add point</span></span>
+<span id="cb144-9"><a href="mapping-introduction.html#cb144-9" aria-hidden="true" tabindex="-1"></a><span class="fu">annoPoint2</span>(<span class="at">object =</span> pdot1,</span>
+<span id="cb144-10"><a href="mapping-introduction.html#cb144-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">annoPos =</span> <span class="st">&#39;left&#39;</span>,</span>
+<span id="cb144-11"><a href="mapping-introduction.html#cb144-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">aesGroup =</span> T,</span>
+<span id="cb144-12"><a href="mapping-introduction.html#cb144-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">aesGroName =</span> <span class="st">&#39;cellGroup&#39;</span>,</span>
+<span id="cb144-13"><a href="mapping-introduction.html#cb144-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">xPosition =</span> <span class="sc">-</span><span class="fl">0.2</span>,</span>
+<span id="cb144-14"><a href="mapping-introduction.html#cb144-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">pCol =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&#39;#488FB1&#39;</span>,<span class="st">&#39;#4FD3C4&#39;</span>,<span class="st">&#39;#C1F8CF&#39;</span>),<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>)))</span></code></pre></div>
+<p><img src="local_images/29.png" style="width:100.0%" /></p>
+</div>
+<div id="annotate-with-annotriangle" class="section level2 hasAnchor" number="9.6">
+<h2><span class="header-section-number">9.6</span> Annotate with annoTriangle<a href="mapping-introduction.html#annotate-with-annotriangle" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>I also supply an <strong>annoTriangle</strong> to add <strong>triangle annotation</strong> in plot which is familiar with the following dotplot here:</p>
+<p><img src="local_images/30.png" style="width:100.0%" /></p>
+<blockquote>
+<p>This figure shows the different <strong>celltype numbers’ variation</strong> along continues <strong>reaearch time point</strong>.</p>
+</blockquote>
+<p>Let’s add an triangle:</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="mapping-introduction.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add triangle</span></span>
+<span id="cb145-2"><a href="mapping-introduction.html#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoTriangle</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb145-3"><a href="mapping-introduction.html#cb145-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb145-4"><a href="mapping-introduction.html#cb145-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">21</span>),</span>
+<span id="cb145-5"><a href="mapping-introduction.html#cb145-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="fl">8.8</span>,<span class="fl">9.3</span>))</span></code></pre></div>
+<p><img src="local_images/31.png" style="width:100.0%" /></p>
+<p>Add a border on it:</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="mapping-introduction.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add border</span></span>
+<span id="cb146-2"><a href="mapping-introduction.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoTriangle</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb146-3"><a href="mapping-introduction.html#cb146-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb146-4"><a href="mapping-introduction.html#cb146-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">21</span>),</span>
+<span id="cb146-5"><a href="mapping-introduction.html#cb146-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="fl">8.8</span>,<span class="fl">9.3</span>),</span>
+<span id="cb146-6"><a href="mapping-introduction.html#cb146-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">addBorder =</span> T,</span>
+<span id="cb146-7"><a href="mapping-introduction.html#cb146-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="local_images/32.png" style="width:100.0%" /></p>
+<p>You can also <strong>remove the triangle annotation</strong>:</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="mapping-introduction.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove triangle</span></span>
+<span id="cb147-2"><a href="mapping-introduction.html#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoTriangle</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb147-3"><a href="mapping-introduction.html#cb147-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb147-4"><a href="mapping-introduction.html#cb147-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">21</span>),</span>
+<span id="cb147-5"><a href="mapping-introduction.html#cb147-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="fl">8.8</span>,<span class="fl">9.3</span>),</span>
+<span id="cb147-6"><a href="mapping-introduction.html#cb147-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">addBorder =</span> T,</span>
+<span id="cb147-7"><a href="mapping-introduction.html#cb147-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb147-8"><a href="mapping-introduction.html#cb147-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">addTriangle =</span> F)</span></code></pre></div>
+<p><img src="local_images/33.png" style="width:100.0%" /></p>
+<p>There are <strong>four types triangle</strong><code>(RU/RD/LU/LD)</code> which can be choosed to show:</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="mapping-introduction.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change triangle type(4 types)</span></span>
+<span id="cb148-2"><a href="mapping-introduction.html#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoTriangle</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb148-3"><a href="mapping-introduction.html#cb148-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb148-4"><a href="mapping-introduction.html#cb148-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">21</span>),</span>
+<span id="cb148-5"><a href="mapping-introduction.html#cb148-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="fl">8.8</span>,<span class="fl">9.3</span>),</span>
+<span id="cb148-6"><a href="mapping-introduction.html#cb148-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">addBorder =</span> T,</span>
+<span id="cb148-7"><a href="mapping-introduction.html#cb148-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb148-8"><a href="mapping-introduction.html#cb148-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">triangleType =</span> <span class="st">&#39;LD&#39;</span>)</span></code></pre></div>
+<p><img src="local_images/34.png" style="width:100.0%" /></p>
+<p><strong>Supply colors</strong>:</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="mapping-introduction.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change color</span></span>
+<span id="cb149-2"><a href="mapping-introduction.html#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoTriangle</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb149-3"><a href="mapping-introduction.html#cb149-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">annoPos =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb149-4"><a href="mapping-introduction.html#cb149-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">21</span>),</span>
+<span id="cb149-5"><a href="mapping-introduction.html#cb149-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="fl">8.8</span>,<span class="fl">9.3</span>),</span>
+<span id="cb149-6"><a href="mapping-introduction.html#cb149-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">addBorder =</span> T,</span>
+<span id="cb149-7"><a href="mapping-introduction.html#cb149-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb149-8"><a href="mapping-introduction.html#cb149-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">triangleType =</span> <span class="st">&#39;LD&#39;</span>,</span>
+<span id="cb149-9"><a href="mapping-introduction.html#cb149-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">fillCol =</span> <span class="fu">useMyCol</span>(<span class="st">&#39;paired&#39;</span>,<span class="dv">10</span>))</span></code></pre></div>
+<p><img src="local_images/35.png" style="width:100.0%" /></p>
+<p>Add to <strong>botomn</strong>:</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="mapping-introduction.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add to bottomn</span></span>
+<span id="cb150-2"><a href="mapping-introduction.html#cb150-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annoTriangle</span>(<span class="at">object =</span> pdot,</span>
+<span id="cb150-3"><a href="mapping-introduction.html#cb150-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">annoPos =</span> <span class="st">&#39;botomn&#39;</span>,</span>
+<span id="cb150-4"><a href="mapping-introduction.html#cb150-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">21</span>),</span>
+<span id="cb150-5"><a href="mapping-introduction.html#cb150-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.7</span>,<span class="sc">-</span><span class="fl">1.2</span>),</span>
+<span id="cb150-6"><a href="mapping-introduction.html#cb150-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">addBorder =</span> T,</span>
+<span id="cb150-7"><a href="mapping-introduction.html#cb150-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb150-8"><a href="mapping-introduction.html#cb150-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">triangleType =</span> <span class="st">&#39;RU&#39;</span>,</span>
+<span id="cb150-9"><a href="mapping-introduction.html#cb150-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">fillCol =</span> <span class="fu">useMyCol</span>(<span class="st">&#39;paired&#39;</span>,<span class="dv">10</span>))</span></code></pre></div>
+<p><img src="local_images/36.png" style="width:100.0%" /></p>
+</div>
+<div id="example-2" class="section level2 hasAnchor" number="9.7">
+<h2><span class="header-section-number">9.7</span> Example<a href="mapping-introduction.html#example-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s draw a <strong>correlation plot</strong>:</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="mapping-introduction.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jjAnno)</span>
+<span id="cb151-2"><a href="mapping-introduction.html#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb151-3"><a href="mapping-introduction.html#cb151-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-4"><a href="mapping-introduction.html#cb151-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 加载内置数据集</span></span>
+<span id="cb151-5"><a href="mapping-introduction.html#cb151-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&#39;mtcars&#39;</span>)</span>
+<span id="cb151-6"><a href="mapping-introduction.html#cb151-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-7"><a href="mapping-introduction.html#cb151-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算相关性系数</span></span>
+<span id="cb151-8"><a href="mapping-introduction.html#cb151-8" aria-hidden="true" tabindex="-1"></a>corda <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">cor</span>(mtcars))</span>
+<span id="cb151-9"><a href="mapping-introduction.html#cb151-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-10"><a href="mapping-introduction.html#cb151-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 上三角操作</span></span>
+<span id="cb151-11"><a href="mapping-introduction.html#cb151-11" aria-hidden="true" tabindex="-1"></a>corda[<span class="fu">upper.tri</span>(corda)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb151-12"><a href="mapping-introduction.html#cb151-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-13"><a href="mapping-introduction.html#cb151-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 加载R包</span></span>
+<span id="cb151-14"><a href="mapping-introduction.html#cb151-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb151-15"><a href="mapping-introduction.html#cb151-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb151-16"><a href="mapping-introduction.html#cb151-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-17"><a href="mapping-introduction.html#cb151-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 增加行名列</span></span>
+<span id="cb151-18"><a href="mapping-introduction.html#cb151-18" aria-hidden="true" tabindex="-1"></a>corda<span class="sc">$</span>y <span class="ot">&lt;-</span> <span class="fu">rownames</span>(corda)</span>
+<span id="cb151-19"><a href="mapping-introduction.html#cb151-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-20"><a href="mapping-introduction.html#cb151-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 宽数据转长数据</span></span>
+<span id="cb151-21"><a href="mapping-introduction.html#cb151-21" aria-hidden="true" tabindex="-1"></a>da <span class="ot">&lt;-</span> <span class="fu">melt</span>(<span class="at">data =</span> corda) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
+<span id="cb151-22"><a href="mapping-introduction.html#cb151-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-23"><a href="mapping-introduction.html#cb151-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 因子化</span></span>
+<span id="cb151-24"><a href="mapping-introduction.html#cb151-24" aria-hidden="true" tabindex="-1"></a>da<span class="sc">$</span>variable <span class="ot">&lt;-</span> <span class="fu">factor</span>(da<span class="sc">$</span>variable,<span class="at">levels =</span> <span class="fu">unique</span>(da<span class="sc">$</span>variable))</span>
+<span id="cb151-25"><a href="mapping-introduction.html#cb151-25" aria-hidden="true" tabindex="-1"></a>da<span class="sc">$</span>y <span class="ot">&lt;-</span> <span class="fu">factor</span>(da<span class="sc">$</span>y,<span class="at">levels =</span> <span class="fu">rev</span>(<span class="fu">unique</span>(da<span class="sc">$</span>y)))</span>
+<span id="cb151-26"><a href="mapping-introduction.html#cb151-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-27"><a href="mapping-introduction.html#cb151-27" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb151-28"><a href="mapping-introduction.html#cb151-28" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span></span>
+<span id="cb151-29"><a href="mapping-introduction.html#cb151-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(da) <span class="sc">+</span></span>
+<span id="cb151-30"><a href="mapping-introduction.html#cb151-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 矩形图层</span></span>
+<span id="cb151-31"><a href="mapping-introduction.html#cb151-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">x =</span> variable,<span class="at">y =</span> y),<span class="at">fill =</span> <span class="st">&#39;white&#39;</span>,</span>
+<span id="cb151-32"><a href="mapping-introduction.html#cb151-32" aria-hidden="true" tabindex="-1"></a>            <span class="at">show.legend =</span> F,</span>
+<span id="cb151-33"><a href="mapping-introduction.html#cb151-33" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&#39;black&#39;</span>) <span class="sc">+</span></span>
+<span id="cb151-34"><a href="mapping-introduction.html#cb151-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 点图层</span></span>
+<span id="cb151-35"><a href="mapping-introduction.html#cb151-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> variable,<span class="at">y =</span> y,<span class="at">fill =</span> value,<span class="at">size =</span> value),</span>
+<span id="cb151-36"><a href="mapping-introduction.html#cb151-36" aria-hidden="true" tabindex="-1"></a>             <span class="at">show.legend =</span> T,</span>
+<span id="cb151-37"><a href="mapping-introduction.html#cb151-37" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape =</span> <span class="dv">21</span>,<span class="at">color =</span> <span class="st">&#39;black&#39;</span>) <span class="sc">+</span></span>
+<span id="cb151-38"><a href="mapping-introduction.html#cb151-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">16</span>) <span class="sc">+</span></span>
+<span id="cb151-39"><a href="mapping-introduction.html#cb151-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 主题调整</span></span>
+<span id="cb151-40"><a href="mapping-introduction.html#cb151-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb151-41"><a href="mapping-introduction.html#cb151-41" aria-hidden="true" tabindex="-1"></a>        <span class="at">aspect.ratio =</span> <span class="dv">1</span>,</span>
+<span id="cb151-42"><a href="mapping-introduction.html#cb151-42" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>,<span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb151-43"><a href="mapping-introduction.html#cb151-43" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">2</span>,<span class="at">unit =</span> <span class="st">&#39;cm&#39;</span>)) <span class="sc">+</span></span>
+<span id="cb151-44"><a href="mapping-introduction.html#cb151-44" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 点颜色</span></span>
+<span id="cb151-45"><a href="mapping-introduction.html#cb151-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colors =</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;#F6E3C5&quot;</span>, <span class="st">&quot;#A0D995&quot;</span>, <span class="st">&quot;#4CACBC&quot;</span>))(<span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb151-46"><a href="mapping-introduction.html#cb151-46" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 点大小范围</span></span>
+<span id="cb151-47"><a href="mapping-introduction.html#cb151-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">14</span>)) <span class="sc">+</span></span>
+<span id="cb151-48"><a href="mapping-introduction.html#cb151-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&#39;&#39;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&#39;&#39;</span>) <span class="sc">+</span></span>
+<span id="cb151-49"><a href="mapping-introduction.html#cb151-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">clip =</span> <span class="st">&#39;off&#39;</span>)</span>
+<span id="cb151-50"><a href="mapping-introduction.html#cb151-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-51"><a href="mapping-introduction.html#cb151-51" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="local_images/37.png" style="width:100.0%" /></p>
+<p>Add <strong>two layers point annotation</strong>:</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="mapping-introduction.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="co"># annotate</span></span>
+<span id="cb152-2"><a href="mapping-introduction.html#cb152-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">annoPoint2</span>(<span class="at">object =</span> p,</span>
+<span id="cb152-3"><a href="mapping-introduction.html#cb152-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">annoManual =</span> T,</span>
+<span id="cb152-4"><a href="mapping-introduction.html#cb152-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">xPosition =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>),</span>
+<span id="cb152-5"><a href="mapping-introduction.html#cb152-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="dv">12</span><span class="sc">:</span><span class="dv">2</span>))</span>
+<span id="cb152-6"><a href="mapping-introduction.html#cb152-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb152-7"><a href="mapping-introduction.html#cb152-7" aria-hidden="true" tabindex="-1"></a><span class="co"># anno to left</span></span>
+<span id="cb152-8"><a href="mapping-introduction.html#cb152-8" aria-hidden="true" tabindex="-1"></a><span class="fu">annoPoint2</span>(<span class="at">object =</span> p1,</span>
+<span id="cb152-9"><a href="mapping-introduction.html#cb152-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">annoPos =</span> <span class="st">&#39;left&#39;</span>,</span>
+<span id="cb152-10"><a href="mapping-introduction.html#cb152-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">yPosition =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>),</span>
+<span id="cb152-11"><a href="mapping-introduction.html#cb152-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">xPosition =</span> <span class="sc">-</span><span class="fl">0.8</span>)</span></code></pre></div>
+<p><img src="local_images/38.png" style="width:100.0%" /></p>
+</div>
+<div id="end" class="section level2 hasAnchor" number="9.8">
+<h2><span class="header-section-number">9.8</span> End<a href="mapping-introduction.html#end" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>More paremeters see:</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="mapping-introduction.html#cb153-1" aria-hidden="true" tabindex="-1"></a>?useMyCol</span>
+<span id="cb153-2"><a href="mapping-introduction.html#cb153-2" aria-hidden="true" tabindex="-1"></a>?annoPoint</span>
+<span id="cb153-3"><a href="mapping-introduction.html#cb153-3" aria-hidden="true" tabindex="-1"></a>?annoPoint2</span>
+<span id="cb153-4"><a href="mapping-introduction.html#cb153-4" aria-hidden="true" tabindex="-1"></a>?annoRect</span>
+<span id="cb153-5"><a href="mapping-introduction.html#cb153-5" aria-hidden="true" tabindex="-1"></a>?annoSegment</span>
+<span id="cb153-6"><a href="mapping-introduction.html#cb153-6" aria-hidden="true" tabindex="-1"></a>?annoImage</span>
+<span id="cb153-7"><a href="mapping-introduction.html#cb153-7" aria-hidden="true" tabindex="-1"></a>?annoTriangle</span>
+<span id="cb153-8"><a href="mapping-introduction.html#cb153-8" aria-hidden="true" tabindex="-1"></a>?annoLegend</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="annolegend.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="facet-introduction.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/08-mappingFunction.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
